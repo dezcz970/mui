@@ -1,0 +1,129 @@
+import React from 'react';
+import {
+  Box,
+  Typography,
+  Button,
+  Container,
+  Paper,
+  useTheme
+} from '@mui/material';
+import {
+  Home as HomeIcon,
+  ErrorOutline as ErrorIcon
+} from '@mui/icons-material';
+
+const NotFoundPage = () => {
+  const theme = useTheme();
+
+  const handleGoHome = () => {
+    // 実際のアプリケーションでは react-router-dom の useNavigate を使用
+    console.log('マイページに遷移します');
+  };
+
+  return (
+    <Container maxWidth="md">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          textAlign: 'center',
+          py: 4
+        }}
+      >
+        <Paper
+          elevation={3}
+          sx={{
+            p: 6,
+            borderRadius: 3,
+            maxWidth: 600,
+            width: '100%'
+          }}
+        >
+          <Box sx={{ mb: 3 }}>
+            <ErrorIcon
+              sx={{
+                fontSize: 80,
+                color: theme.palette.error.main,
+                mb: 2
+              }}
+            />
+          </Box>
+
+          <Typography
+            variant="h1"
+            component="h1"
+            sx={{
+              fontSize: { xs: '4rem', md: '6rem' },
+              fontWeight: 'bold',
+              color: theme.palette.error.main,
+              mb: 2,
+              lineHeight: 1
+            }}
+          >
+            404
+          </Typography>
+
+          <Typography
+            variant="h4"
+            component="h2"
+            sx={{
+              mb: 2,
+              fontWeight: 'medium',
+              color: theme.palette.text.primary
+            }}
+          >
+            ページが見つかりません
+          </Typography>
+
+          <Typography
+            variant="body1"
+            sx={{
+              mb: 4,
+              color: theme.palette.text.secondary,
+              lineHeight: 1.6,
+              fontSize: '1.1rem'
+            }}
+          >
+            お探しのページは存在しないか、移動された可能性があります。
+            <br />
+            URLを確認するか、マイページからお探しください。
+          </Typography>
+
+          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+            <Button
+              variant="contained"
+              size="large"
+              startIcon={<HomeIcon />}
+              onClick={handleGoHome}
+              sx={{
+                px: 4,
+                py: 1.5,
+                fontSize: '1.1rem',
+                borderRadius: 2,
+                textTransform: 'none'
+              }}
+            >
+              マイページに戻る
+            </Button>
+          </Box>
+        </Paper>
+
+        <Typography
+          variant="body2"
+          sx={{
+            mt: 3,
+            color: theme.palette.text.secondary,
+            fontSize: '0.9rem'
+          }}
+        >
+          問題が続く場合は、サポートまでお問い合わせください。
+        </Typography>
+      </Box>
+    </Container>
+  );
+};
+
+export default NotFoundPage;
