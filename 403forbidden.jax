@@ -1,0 +1,101 @@
+import React from 'react';
+import {
+  Box,
+  Typography,
+  Button,
+  Container,
+  Paper
+} from '@mui/material';
+import {
+  Lock as LockIcon,
+  Home as HomeIcon
+} from '@mui/icons-material';
+
+export default function Error403Page() {
+  const handleGoHome = () => {
+    // React Routerを使用している場合は、useNavigateやLinkコンポーネントを使用してください
+    window.location.href = '/';
+  };
+
+  return (
+    <Container maxWidth="sm">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        minHeight="100vh"
+        textAlign="center"
+      >
+        <Paper
+          elevation={3}
+          sx={{
+            padding: 4,
+            borderRadius: 2,
+            width: '100%'
+          }}
+        >
+          <Box mb={3}>
+            <LockIcon 
+              sx={{ 
+                fontSize: 80, 
+                color: 'error.main',
+                mb: 2
+              }} 
+            />
+          </Box>
+          
+          <Typography 
+            variant="h1" 
+            component="h1"
+            sx={{ 
+              fontSize: { xs: '4rem', sm: '6rem' },
+              fontWeight: 'bold',
+              color: 'error.main',
+              mb: 2
+            }}
+          >
+            403
+          </Typography>
+          
+          <Typography 
+            variant="h4" 
+            component="h2"
+            gutterBottom
+            sx={{ 
+              fontSize: { xs: '1.5rem', sm: '2rem' },
+              mb: 2
+            }}
+          >
+            アクセスが拒否されました
+          </Typography>
+          
+          <Typography 
+            variant="body1" 
+            color="text.secondary"
+            sx={{ mb: 4, lineHeight: 1.6 }}
+          >
+            申し訳ございませんが、このページにアクセスする権限がありません。
+            <br />
+            必要な権限をお持ちでないか、ログインが必要な可能性があります。
+          </Typography>
+          
+          <Button
+            variant="contained"
+            size="large"
+            startIcon={<HomeIcon />}
+            onClick={handleGoHome}
+            sx={{
+              py: 1.5,
+              px: 4,
+              fontSize: '1.1rem',
+              borderRadius: 2
+            }}
+          >
+            マイページに戻る
+          </Button>
+        </Paper>
+      </Box>
+    </Container>
+  );
+}
